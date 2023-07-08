@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import UsersList from "./Lists/UsersList";
 
 const Users = () => {
 
@@ -10,29 +11,7 @@ const Users = () => {
 
     return (
         <div className='container'>
-            <h1 style={{textAlign: 'center'}}>Список пользователей</h1>
-            <table className='table table-striped mt-4'>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Last name</th>
-                        <th>Birth Day</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {
-                    users.map(user =>
-                        <tr>
-                            <td>{user.id}</td>
-                            <td>{user.name}</td>
-                            <td>{user.lastName}</td>
-                            <td>{user.birthDay}</td>
-                        </tr>
-                    )
-                }
-                </tbody>
-            </table>
+            <UsersList users={users}/>
         </div>
     );
 };
