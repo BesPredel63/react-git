@@ -1,4 +1,5 @@
 import React from 'react';
+import UsersItem from "./UsersItem";
 
 const UsersList = ({users}) => {
     return (
@@ -13,18 +14,7 @@ const UsersList = ({users}) => {
                     <th>Birth Day</th>
                 </tr>
                 </thead>
-                <tbody>
-                {
-                    users.map(user =>
-                        <tr>
-                            <td>{user.id}</td>
-                            <td>{user.name}</td>
-                            <td>{user.lastName}</td>
-                            <td>{user.birthDay}</td>
-                        </tr>
-                    )
-                }
-                </tbody>
+                <UsersItem users={users} />
             </table>
         </div>
     );
