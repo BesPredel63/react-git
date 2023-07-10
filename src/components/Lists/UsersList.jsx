@@ -8,10 +8,10 @@ const UsersList = ({users, remove}) => {
             <table className='table table-striped mt-4'>
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Имя</th>
-                    <th>Фамилия</th>
-                    <th>Дата рожденья</th>
+                    <th style={{width: 75, textAlign: 'center'}}>ID</th>
+                    <th style={{width: 150}}>Имя</th>
+                    <th style={{width: 250}}>Фамилия</th>
+                    <th style={{width: 250}}>Дата рожденья</th>
                     <th></th>
                 </tr>
                 </thead>

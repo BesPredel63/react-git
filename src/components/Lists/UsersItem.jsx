@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ButtonDelete from "../UI/Buttons/ButtonDelete";
+import ButtonUpdate from "../UI/Buttons/ButtonUpdate";
+import UserUpdate from "./UserUpdate";
 
 const UsersItem = ({users, remove}) => {
+
+    const [user, setUser] = useState()
 
     if (!users.length) {
         return (
@@ -11,17 +15,24 @@ const UsersItem = ({users, remove}) => {
         )
     }
 
+    if (user) {
+        return (
+            <UserUpdate current={user} />
+            )
+    }
+
     return (
         <tbody>
         {
             users.map((user, index) =>
                 <tr key={user.id}>
-                    <td>{index + 1}</td>
+                    <td style={{textAlign: 'center'}}>{index + 1}</td>
                     <td>{user.name}</td>
                     <td>{user.lastName}</td>
                     <td>{user.birthDay}</td>
-                    <td style={{width: 120}}>
-                        <ButtonDelete className='btn btn-danger' onClick={() => remove(user)}>Удалить</ButtonDelete>
+                    <td style={{width: 220}}>
+                        <ButtonUpdate onClick={() => setUser(user)}>Изменить</ButtonUpdate>
+                        <ButtonDelete onClick={() => remove(user)}>Удалить</ButtonDelete>
                     </td>
                 </tr>
             )
