@@ -1,38 +1,56 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ButtonSave from "../UI/Buttons/ButtonSave";
-import InputNoLabel from "../UI/Inputs/InputNoLabel";
 
 const UserUpdate = ({current}) => {
 
+    const [upDateUser, setUpdateUser] = useState({
+        name: '',
+        lastName: '',
+        birthDay: new Date()
+    })
 
+    const updateUser = (e) => {
+        const user = {
+            name: e.target.value,
+            lastName: e.target.value,
+            birthDay: e.target.value,
+        }
+        console.log('update: ', user)
+    }
+
+    console.log('current user:', current)
 
     return (
-        <tbody>
                 <tr key={current.id}>
                     <td></td>
                     <td>
-                        <InputNoLabel
-                            type='text'
-                            value={current.name}
-                        />
+                        <input type='text' value={current.name} onChange={e => setUpdateUser(e.target.value)} />
+                        {/*<InputNoLabel*/}
+                        {/*    type='text'*/}
+                        {/*    value={current.name}*/}
+                        {/*    onChange={e => setUpdateUser(e.target.value)}*/}
+                        {/*/>*/}
                     </td>
                     <td>
-                        <InputNoLabel
-                            type='text'
-                            value={current.lastName}
-                        />
+                        <input type='text' value={current.lastName} onChange={e => setUpdateUser(e.target.value)} />
+                        {/*<InputNoLabel*/}
+                        {/*    type='text'*/}
+                        {/*    value={current.lastName}*/}
+                        {/*    onChange={e => setUpdateUser(e.target.value)}*/}
+                        {/*/>*/}
                     </td>
                     <td>
-                        <InputNoLabel
-                            type='date'
-                            value={current.birthDay}
-                        />
+                        <input type='text' value={current.birthDay} onChange={e => setUpdateUser(e.target.value)} />
+                        {/*<InputNoLabel*/}
+                        {/*    type='date'*/}
+                        {/*    value={current.birthDay}*/}
+                        {/*    onChange={e => setUpdateUser(e.target.value)}*/}
+                        {/*/>*/}
                     </td>
                     <td style={{width: 120}}>
-                        <ButtonSave>Сохранить</ButtonSave>
+                        <ButtonSave onClick={updateUser}>Сохранить</ButtonSave>
                     </td>
                 </tr>
-        </tbody>
     );
 };
 

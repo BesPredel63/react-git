@@ -5,7 +5,7 @@ import UserUpdate from "./UserUpdate";
 
 const UsersItem = ({users, remove}) => {
 
-    const [user, setUser] = useState()
+    const [current, setCurrent] = useState()
 
     if (!users.length) {
         return (
@@ -15,26 +15,29 @@ const UsersItem = ({users, remove}) => {
         )
     }
 
-    if (user) {
-        return (
-            <UserUpdate current={user} />
-            )
-    }
-
     return (
         <tbody>
         {
-            users.map((user, index) =>
-                <tr key={user.id}>
-                    <td style={{textAlign: 'center'}}>{index + 1}</td>
-                    <td>{user.name}</td>
-                    <td>{user.lastName}</td>
-                    <td>{user.birthDay}</td>
-                    <td style={{width: 220}}>
-                        <ButtonUpdate onClick={() => setUser(user)}>Изменить</ButtonUpdate>
-                        <ButtonDelete onClick={() => remove(user)}>Удалить</ButtonDelete>
-                    </td>
-                </tr>
+            users.map((user, index) => {
+                    if (user !== current) { return (
+                        <tr key={user.id}>
+                            <td style={{textAlign: 'center'}}>{index + 1}</td>
+                            <td>{user.name}</td>
+                            <td>{user.lastName}</td>
+                            <td>{user.birthDay}</td>
+                            <td style={{width: 220}}>
+                                <ButtonUpdate onClick={() => setCurrent(user)}>Изменить</ButtonUpdate>
+                                <ButtonDelete onClick={() => remove(user)}>Удалить</ButtonDelete>
+                            </td>
+                        </tr>
+                    )
+                    } else {
+                        return (
+                            <UserUpdate current={current} />
+                        )
+                    }
+                }
+
             )
         }
         </tbody>
