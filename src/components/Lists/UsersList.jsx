@@ -9,9 +9,9 @@ const UsersList = ({users, remove}) => {
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Last name</th>
-                    <th>Birth Day</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Дата рожденья</th>
                     <th></th>
                 </tr>
                 </thead>

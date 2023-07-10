@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonDelete from "../UI/Buttons/ButtonDelete";
 
 const UsersItem = ({users, remove}) => {
 
@@ -13,14 +14,14 @@ const UsersItem = ({users, remove}) => {
     return (
         <tbody>
         {
-            users.map(user =>
-                <tr>
-                    <td>{user.id}</td>
+            users.map((user, index) =>
+                <tr key={user.id}>
+                    <td>{index + 1}</td>
                     <td>{user.name}</td>
                     <td>{user.lastName}</td>
                     <td>{user.birthDay}</td>
-                    <td>
-                        <button className='btn btn-danger' onClick={() => remove(user)}>Удалить</button>
+                    <td style={{width: 120}}>
+                        <ButtonDelete className='btn btn-danger' onClick={() => remove(user)}>Удалить</ButtonDelete>
                     </td>
                 </tr>
             )

@@ -10,13 +10,17 @@ const Users = () => {
         {id: 3, name: 'Сергей', lastName: 'Сергеев', birthDay: '1987-11-25'},
     ])
 
+    const createUser = (user) => {
+        setUsers([...users, user])
+    }
+
     const removeUser = (user) => {
         setUsers(users.filter(u => u.id !== user.id))
     }
 
     return (
         <div className='container'>
-            <UsersForm />
+            <UsersForm create={createUser}/>
             <UsersList users={users} remove={removeUser}/>
         </div>
     );
