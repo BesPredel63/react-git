@@ -1,10 +1,10 @@
 import React from 'react';
 import UsersItem from "./UsersItem";
 
-const UsersList = ({users}) => {
+const UsersList = ({users, remove}) => {
     return (
         <div>
-            <h1 style={{textAlign: 'center'}}>Список пользователей</h1>
+            <h2>Список пользователей</h2>
             <table className='table table-striped mt-4'>
                 <thead>
                 <tr>
@@ -12,9 +12,10 @@ const UsersList = ({users}) => {
                     <th>Name</th>
                     <th>Last name</th>
                     <th>Birth Day</th>
+                    <th></th>
                 </tr>
                 </thead>
-                <UsersItem users={users} />
+                <UsersItem users={users} remove={remove}/>
             </table>
         </div>
     );

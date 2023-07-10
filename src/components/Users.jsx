@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import UsersList from "./Lists/UsersList";
+import UsersForm from "./Forms/UsersForm";
 
 const Users = () => {
 
@@ -9,9 +10,14 @@ const Users = () => {
         {id: 3, name: 'Сергей', lastName: 'Сергеев', birthDay: '1987-11-25'},
     ])
 
+    const removeUser = (user) => {
+        setUsers(users.filter(u => u.id !== user.id))
+    }
+
     return (
         <div className='container'>
-            <UsersList users={users}/>
+            <UsersForm />
+            <UsersList users={users} remove={removeUser}/>
         </div>
     );
 };
