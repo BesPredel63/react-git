@@ -12,7 +12,7 @@ const UserUpdate = ({current, update}) => {
 
     const upDataUser = (e) => {
         e.preventDefault()
-        const temp = {
+        let temp = {
             id: current.id,
             ...user
         }

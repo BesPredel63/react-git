@@ -5,6 +5,8 @@ import UserUpdate from "./UserUpdate";
 
 const UsersItem = ({users, update, remove}) => {
 
+    // let isEnable = false
+
     const [current, setCurrent] = useState()
 
     if (!users.length) {
@@ -20,27 +22,20 @@ const UsersItem = ({users, update, remove}) => {
     return (
         <tbody>
         {
-            users.map((user, index) => {
-                    if (current !== user) {
-                        return (
-                            <tr key={user.id}>
-                                <td style={{textAlign: 'center'}}>{index + 1}</td>
-                                <td>{user.name}</td>
-                                <td>{user.lastName}</td>
-                                <td>{user.birthDay}</td>
-                                <td style={{width: 220}}>
-                                    <ButtonUpdate onClick={() => setCurrent(user)}>Изменить</ButtonUpdate>
-                                    <ButtonDelete onClick={() => remove(user)}>Удалить</ButtonDelete>
-                                </td>
-                            </tr>
-                        )
-                    } else {
-                        return (
-                            <UserUpdate current={current} update={update} />
-                        )
-                    }
-                }
-
+            users.map((user, index) => (
+                current !== user
+                    ?   <tr key={user.id}>
+                            <td style={{textAlign: 'center'}}>{index + 1}</td>
+                            <td>{user.name}</td>
+                            <td>{user.lastName}</td>
+                            <td>{user.birthDay}</td>
+                            <td style={{width: 220}}>
+                                <ButtonUpdate onClick={() => setCurrent(user)}>Изменить</ButtonUpdate>
+                                <ButtonDelete onClick={() => remove(user)}>Удалить</ButtonDelete>
+                            </td>
+                        </tr>
+                    :   <UserUpdate current={current} update={update} />
+                )
             )
         }
         </tbody>
