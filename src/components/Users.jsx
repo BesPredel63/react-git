@@ -18,10 +18,18 @@ const Users = () => {
         setUsers(users.filter(u => u.id !== user.id))
     }
 
+    const upDateUser = (user) => {
+        users.forEach((element, index) => {
+            if(element.id === user.id) {
+                users[index] = user;
+            }
+        });
+    }
+
     return (
         <div className='container'>
             <UsersForm create={createUser}/>
-            <UsersList users={users} remove={removeUser}/>
+            <UsersList users={users} update={upDateUser} remove={removeUser}/>
         </div>
     );
 };

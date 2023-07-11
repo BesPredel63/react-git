@@ -1,7 +1,7 @@
 import React from 'react';
 import UsersItem from "./UsersItem";
 
-const UsersList = ({users, remove}) => {
+const UsersList = ({users, update, remove}) => {
     return (
         <div>
             <h2>Список пользователей</h2>
@@ -15,7 +15,7 @@ const UsersList = ({users, remove}) => {
                     <th></th>
                 </tr>
                 </thead>
-                <UsersItem users={users} remove={remove}/>
+                <UsersItem users={users} update={update} remove={remove}/>
             </table>
         </div>
     );

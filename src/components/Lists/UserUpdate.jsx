@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import ButtonSave from "../UI/Buttons/ButtonSave";
 import InputNoLabel from "../UI/Inputs/InputNoLabel";
 
-const UserUpdate = ({current}) => {
+const UserUpdate = ({current, update}) => {
 
     const [user, setUser] = useState({
         name: current.name,
@@ -10,14 +10,14 @@ const UserUpdate = ({current}) => {
         birthDay: current.birthDay
     })
 
-    // const upDataUser = (e) => {
-    //     e.preventDefault()
-    //     const temp = {
-    //         id: current.id,
-    //         ...user
-    //     }
-    //     upData(temp)
-    // }
+    const upDataUser = (e) => {
+        e.preventDefault()
+        const temp = {
+            id: current.id,
+            ...user
+        }
+        update(temp)
+    }
 
     return (
         <tr key={current.id}>
@@ -44,7 +44,7 @@ const UserUpdate = ({current}) => {
                 />
             </td>
             <td style={{width: 120}}>
-                <ButtonSave onClick={() => console.log(user)}>Сохранить</ButtonSave>
+                <ButtonSave onClick={upDataUser}>Сохранить</ButtonSave>
             </td>
         </tr>
     )

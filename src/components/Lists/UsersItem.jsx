@@ -3,7 +3,7 @@ import ButtonDelete from "../UI/Buttons/ButtonDelete";
 import ButtonUpdate from "../UI/Buttons/ButtonUpdate";
 import UserUpdate from "./UserUpdate";
 
-const UsersItem = ({users, remove}) => {
+const UsersItem = ({users, update, remove}) => {
 
     const [current, setCurrent] = useState()
 
@@ -15,11 +15,13 @@ const UsersItem = ({users, remove}) => {
         )
     }
 
+    console.log('current: ', current)
+
     return (
         <tbody>
         {
             users.map((user, index) => {
-                    if (user !== current) {
+                    if (current !== user) {
                         return (
                             <tr key={user.id}>
                                 <td style={{textAlign: 'center'}}>{index + 1}</td>
@@ -34,7 +36,7 @@ const UsersItem = ({users, remove}) => {
                         )
                     } else {
                         return (
-                            <UserUpdate current={current} />
+                            <UserUpdate current={current} update={update} />
                         )
                     }
                 }
