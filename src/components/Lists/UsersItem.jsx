@@ -19,18 +19,19 @@ const UsersItem = ({users, remove}) => {
         <tbody>
         {
             users.map((user, index) => {
-                    if (user !== current) { return (
-                        <tr key={user.id}>
-                            <td style={{textAlign: 'center'}}>{index + 1}</td>
-                            <td>{user.name}</td>
-                            <td>{user.lastName}</td>
-                            <td>{user.birthDay}</td>
-                            <td style={{width: 220}}>
-                                <ButtonUpdate onClick={() => setCurrent(user)}>Изменить</ButtonUpdate>
-                                <ButtonDelete onClick={() => remove(user)}>Удалить</ButtonDelete>
-                            </td>
-                        </tr>
-                    )
+                    if (user !== current) {
+                        return (
+                            <tr key={user.id}>
+                                <td style={{textAlign: 'center'}}>{index + 1}</td>
+                                <td>{user.name}</td>
+                                <td>{user.lastName}</td>
+                                <td>{user.birthDay}</td>
+                                <td style={{width: 220}}>
+                                    <ButtonUpdate onClick={() => setCurrent(user)}>Изменить</ButtonUpdate>
+                                    <ButtonDelete onClick={() => remove(user)}>Удалить</ButtonDelete>
+                                </td>
+                            </tr>
+                        )
                     } else {
                         return (
                             <UserUpdate current={current} />
