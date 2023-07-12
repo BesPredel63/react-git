@@ -5,9 +5,8 @@ import UserUpdate from "./UserUpdate";
 
 const UsersItem = ({users, update, remove}) => {
 
-    // let isEnable = false
-
     const [current, setCurrent] = useState()
+    const [visible, setVisible] = useState(false)
 
     if (!users.length) {
         return (
@@ -16,8 +15,6 @@ const UsersItem = ({users, update, remove}) => {
             </tbody>
         )
     }
-
-    console.log('current: ', current)
 
     return (
         <tbody>
@@ -30,11 +27,14 @@ const UsersItem = ({users, update, remove}) => {
                             <td>{user.lastName}</td>
                             <td>{user.birthDay}</td>
                             <td style={{width: 220}}>
-                                <ButtonUpdate onClick={() => setCurrent(user)}>Изменить</ButtonUpdate>
+                                <ButtonUpdate onClick={() => {
+                                    setCurrent(user)
+                                    setVisible(true)
+                                }}>Изменить</ButtonUpdate>
                                 <ButtonDelete onClick={() => remove(user)}>Удалить</ButtonDelete>
                             </td>
                         </tr>
-                    :   <UserUpdate current={current} update={update} />
+                    :   <UserUpdate current={current} update={update} setVisible={setVisible}/>
                 )
             )
         }

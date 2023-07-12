@@ -10,8 +10,6 @@ const UsersForm = ({create}) => {
         birthDay: new Date()
     })
 
-
-
     const addNewUser = (e) => {
         e.preventDefault()
         const newUser = {

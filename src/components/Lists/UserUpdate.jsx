@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import ButtonSave from "../UI/Buttons/ButtonSave";
 import InputNoLabel from "../UI/Inputs/InputNoLabel";
+import ButtonDelete from "../UI/Buttons/ButtonDelete";
 
-const UserUpdate = ({current, update}) => {
+const UserUpdate = ({current, update, setVisible}) => {
 
     const [user, setUser] = useState({
         name: current.name,
@@ -11,12 +12,15 @@ const UserUpdate = ({current, update}) => {
     })
 
     const upDataUser = (e) => {
+        console.log('current: ', current)
         e.preventDefault()
         let temp = {
             id: current.id,
             ...user
         }
+        console.log('temp: ', temp)
         update(temp)
+        setVisible(false)
     }
 
     return (
@@ -45,6 +49,7 @@ const UserUpdate = ({current, update}) => {
             </td>
             <td style={{width: 120}}>
                 <ButtonSave onClick={upDataUser}>Сохранить</ButtonSave>
+                <ButtonDelete onClick={() => setVisible(false)}>Отмена</ButtonDelete>
             </td>
         </tr>
     )
