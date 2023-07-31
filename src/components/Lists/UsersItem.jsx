@@ -20,7 +20,7 @@ const UsersItem = ({users, update, remove}) => {
         <tbody>
         {
             users.map((user, index) => (
-                current !== user
+                current !== user || visible !== true
                     ?   <tr key={user.id}>
                             <td style={{textAlign: 'center'}}>{index + 1}</td>
                             <td>{user.name}</td>

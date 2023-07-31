@@ -12,14 +12,17 @@ const UserUpdate = ({current, update, setVisible}) => {
     })
 
     const upDataUser = (e) => {
-        console.log('current: ', current)
         e.preventDefault()
         let temp = {
             id: current.id,
             ...user
         }
-        console.log('temp: ', temp)
         update(temp)
+        setVisible(false)
+    }
+
+    const cancelUpdate = (e) => {
+        e.preventDefault()
         setVisible(false)
     }
 
@@ -49,7 +52,7 @@ const UserUpdate = ({current, update, setVisible}) => {
             </td>
             <td style={{width: 120}}>
                 <ButtonSave onClick={upDataUser}>Сохранить</ButtonSave>
-                <ButtonDelete onClick={() => setVisible(false)}>Отмена</ButtonDelete>
+                <ButtonDelete onClick={cancelUpdate}>Отмена</ButtonDelete>
             </td>
         </tr>
     )
